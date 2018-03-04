@@ -1,0 +1,69 @@
+#about_company_container {
+    position: absolute;
+    margin-left: 300px;
+    margin-top: 50px;
+    width: 60%;
+    height: 550px ;
+    background: #f1f1f1;
+    border-width: thin;
+    border-color: black !important;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    cursor: pointer;
+}
+
+#about_company_container label{
+    display:inline;
+    float:left;
+    margin-left: 125px;
+    margin-top: 75px;
+    vertical-align:top;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#c_address {
+    top: 50px;
+}
+
+#c_description,
+#c_address{
+    margin-top: 15px;
+    width: 250px;
+    height: 350px;
+    font-size: 13px;
+    color: black;
+    border:none;
+    text-align: justify;
+    line-break: normal;
+
+}
+
+#c_name {
+    position: absolute;
+    margin-left: 1in;
+    margin-top: 25px;
+    font-size: 14px;
+    color: black;
+}
+
+#c_logo {
+    position: absolute;
+    left: 0px;
+    bottom: 30px;
+    font-size: 14px;
+    color: black;
+}
+
+#c_name_span {
+    font-size: 20px;
+    margin-left: 5px;
+    color: black;
+    font-weight: 100;
+}
+
+#edit_charity_button {
+    position: absolute;
+    margin-top: 500px;
+    margin-left: -50px;
+}

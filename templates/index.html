@@ -1,0 +1,160 @@
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Yardım Kurumu</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}js/jquery-easyui-1.4.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}js/jquery-easyui-1.4.4/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}js/jquery-easyui-1.4.4/demo/demo.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/index.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/top-menu.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/dropdown.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/sidemenu.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/about-company-menu.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/person-list-menu.css">
+    <script type="text/javascript" src='//code.jquery.com/jquery-1.12.0.min.js'></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-easyui-1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src='{{ STATIC_URL }}js/jquery.cookie.js'></script>
+    <script type="text/javascript" src='{{ STATIC_URL }}js/funcs/main.js'></script>
+    <script type="text/javascript" src='{{ STATIC_URL }}js/funcs/dropdown.js'></script>
+    <script type="text/javascript" src='//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js'></script>
+
+</head>
+<body>
+
+    <div id='cssmenu'>
+        <ul>
+            <li class='active'><a href='#'>Anasayfa</a></li>
+            <li><a href='#'>Kurumlar</a></li>
+            <li><a href='#'>Hakkımızda</a></li>
+            <li><a href='#'>İletişim</a></li>
+            <li><a href='/logout'>Çıkış</a></li>
+        </ul>
+    </div>
+
+    <div id='sidemenu'>
+        <ul>
+            <li id="person_list_menu">Kişi Listesi</li>
+            <li id="about_company_menu">Kurum Hakkinda</li>
+        </ul>
+    </div>
+
+    <ul id="error_list"></ul>
+
+    <div id="person_list_container">
+        <table id="person_list" class="display"></table>
+        <div id="grid_button_panel">
+            <button id='delete_button' type="button">Kişi Sil</button>
+            <button id='add_panel_button' type="button">Kişi Ekle</button>
+            <button id='edit_panel_button' type="button">Kişi Değiştir</button>
+        </div>
+    </div>
+
+    <div id="about_company_container" style = "visibility:hidden;">
+        <p id="c_name">Kurum İsmi: <span id="c_name_span">{{ data.name }}</span></p>
+
+        <label for="c_address" class="c_header">Adres:<br />
+            <textarea id="c_address">{{ data.address }}</textarea>
+        </label>
+
+        <label for="c_description" class="c_header">Açıklama: <br />
+            <textarea id="c_description">{{ data.description }}</textarea>
+        </label>
+
+        <label id="c_logo" for="a">Logo:
+            <input name="logo" type="file">
+        </label>
+
+        <button id='edit_charity_button' type="button" disabled>Kaydet</button>
+    </div>
+
+    <div id="add_panel" style="visibility: hidden;">
+
+        <label for="tc_no">TC Kimlik No <br />
+            <input type="text" id="tc_no"class='add_input' placeholder="TC Kimlik No"/>
+        </label>
+
+        <label for="name">Ad - Soyad<br />
+            <input type="text" id="name" class='add_input' placeholder="Ad - Soyad"/>
+        </label>
+
+        <label for="need">İhtiyaç<br />
+            <dl id='add_dropdown' class="dropdown add_input">
+                <dt>
+                    <a href="#">
+                        <span class="hida add_hida">İhtiyaç</span>
+                        <p class="multiSel"></p>
+                    </a>
+                </dt>
+
+                <dd>
+                    <div class="mutliSelect">
+                        <ul>
+                            <li><input type="checkbox" class="add_dd_panel" value="Giyim" />Giyim</li>
+                            <li><input type="checkbox" class="add_dd_panel" value="Teknoloji" />Teknoloji</li>
+                            <li><input type="checkbox" class="add_dd_panel" value="Gıda" />Gıda</li>
+                        </ul>
+                    </div>
+                </dd>
+
+            </dl>
+        </label>
+
+        <label for="desc">Açıklama<br />
+            <input type="text" id="desc" class='add_input' placeholder="Açıklama"/>
+        </label>
+
+        <label for="priority">Öncelik<br />
+            <input type="text" id="priority" class='add_input' placeholder="Öncelik"/>
+        </label>
+
+        <input type="button" id="add_button" value="Ekle"/>
+    </div>
+
+    <div id="edit_panel" style="visibility: hidden;">
+
+        <label for="tc_no_edit">TC Kimlik No <br />
+            <input type="text" id="tc_no_edit" class='edit_input'/>
+        </label>
+
+        <label for="name_edit">Ad - Soyad<br />
+            <input type="text" id="name_edit" class='edit_input'/>
+        </label>
+
+        <label for="need_edit">İhtiyaç<br />
+            <dl id='edit_dropdown' class="dropdown edit_input">
+                <dt>
+                    <a href="#">
+                        <span class="hida edit_hida">İhtiyaç</span>
+                        <p class="multiSel"></p>
+                    </a>
+                </dt>
+
+                <dd>
+                    <div class="mutliSelect">
+                        <ul>
+                            <li><input type="checkbox" class="edit_dd_panel" value="Giyim" />Giyim</li>
+                            <li><input type="checkbox" class="edit_dd_panel" value="Teknoloji" />Teknoloji</li>
+                            <li><input type="checkbox" class="edit_dd_panel" value="Gida" />Gida</li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </label>
+
+        <label for="desc_edit">Açıklama<br />
+            <input type="text" id="desc_edit" class='edit_input'/>
+        </label>
+
+        <label for="priority_edit">Öncelik<br />
+            <input type="text" id="priority_edit" class='edit_input'/>
+        </label>
+
+        <input type="button" id="edit_button" value="Değiştir"/>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>Yardim Platformu</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background: #fff;
+                color: #fff;
+                font-family: Arial;
+                font-size: 12px;
+                background-image: url({{ STATIC_URL }}pics/login.jpg);
+                background-size: cover;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/login.css">
+    </head>
+
+    <body>
+        <div class="body"></div>
+        <div class="grad"></div>
+        <div class="header">
+            <div>YARDIM<span> PLATFORMU</span></div>
+        </div> <br>
+        <div class="login">
+            <form method="post" action="/index">
+                <input type="text" placeholder="isim" name="username"><br>
+                <input type="password" placeholder="şifre" name="password"><br>
+                {% csrf_token %}
+                <input type="submit" name="login" value="Giriş">
+            </form>
+        </div>
+    </body>
+</html>
+

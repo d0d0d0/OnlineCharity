@@ -1,0 +1,77 @@
+.dropdown {
+    transform: translateY(-50%);
+}
+
+a {
+  color: #fff;
+}
+
+.dropdown dd,
+.dropdown dt {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown dd {
+  position: relative;
+}
+
+.dropdown a,
+.dropdown a:visited {
+    color: darkgrey;
+    font-size: 12px;
+    height: 25px;
+}
+
+.dropdown dt a {
+    background-color: white;
+    margin-top:16px;
+    display: block;
+    min-height: 25px;
+    line-height: 24px;
+    overflow: hidden;
+    width: 172px;
+}
+
+.dropdown dt a span,
+.multiSel span {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 3px 2px 0;
+}
+
+.multiSel span {
+    padding: -20px -20px -2px 0;
+}
+
+.dropdown dd ul {
+  background-color: white;
+  border: 0;
+  color: black;
+  display: none;
+  left: 0;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 172px;
+  list-style: none;
+  height: 70px;
+  overflow: auto;
+}
+
+.dropdown span.value {
+  display: none;
+}
+
+.dropdown dd ul li a {
+  padding: 5px;
+  display: block;
+}
+
+.dropdown dd ul li a:hover {
+  background-color: #fff;
+}

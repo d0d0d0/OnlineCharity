@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    font-family: Raleway, sans-serif;
+}
+
+input[type=button]{
+	width: 60px;
+	height: 60px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+    margin-left: 10px;
+}
+
+button {
+	width: 100px;
+	height: 25px;
+	background: #fff;
+	border: thin solid black;
+	cursor: pointer;
+	padding: 6px;
+	margin-top: 10px;
+    margin-left: 10px;
+    font-family: Raleway, sans-serif;
+    font-size: 12px;
+}
+
